@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/Bloc-CESI-ASP.props" />
+</Project>

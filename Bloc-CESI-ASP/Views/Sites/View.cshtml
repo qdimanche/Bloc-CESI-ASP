@@ -1,0 +1,19 @@
+@model Bloc_CESI_ASP.Models.UpdateSiteViewModel
+
+@{}
+
+
+<h1>Edit Employee</h1>
+
+<form method="post" action="Update" class="mt-5">
+    <div class="mb-3">
+        <input type="text" class="form-control" asp-for="Id" readonly>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">First name</label>
+        <input type="text" class="form-control" asp-for="City">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-danger" asp-action="Delete" asp-controller="Sites">Delete</button>
+</form>
+

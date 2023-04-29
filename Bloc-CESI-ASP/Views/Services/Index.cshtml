@@ -1,0 +1,24 @@
+@model List<Bloc_CESI_ASP.Models.Service>
+
+<h1>Sites</h1>
+
+<table class="table">
+   <thead>
+   <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th></th>
+   </tr>
+   </thead>
+   <tbody>
+      @foreach (var service in Model)
+      {
+         <tr>
+            <td>@service.Id</td>
+            <td>@service.Name</td>
+            <td><a href="Services/View/@service.Id">View</a></td>
+         </tr>
+      }
+   </tbody>
+
+</table>
