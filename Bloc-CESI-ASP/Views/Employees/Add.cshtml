@@ -29,7 +29,7 @@
     </div> 
     <div class="mb-3">
         <label for="" class="form-label">Services</label>
-        <select asp-for="SelectedService">
+        <select asp-for="Service">
             @if (Model.Services != null)
             {
                 @foreach (var service in Model.Services)
@@ -40,6 +40,22 @@
         else
         {
             <option value="">No services available</option>
+        }
+        </select>
+    </div>  
+    <div class="mb-3">
+        <label for="" class="form-label">Sites</label>
+        <select asp-for="Site">
+            @if (Model.Sites != null)
+            {
+                @foreach (var site in Model.Sites)
+                {
+                    <option value="@site.City">@site.City</option>
+                }
+            }
+        else
+        {
+            <option value="">No sites available</option>
         }
         </select>
     </div>

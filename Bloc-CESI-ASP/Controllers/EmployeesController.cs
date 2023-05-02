@@ -25,9 +25,11 @@ namespace Bloc_CESI_ASP.Controllers
         public async Task<IActionResult> Add()
         {
             var services = await _applicationDbContext.Services.ToListAsync();
+            var sites = await _applicationDbContext.Sites.ToListAsync();
             var viewModel = new AddEmployeeViewModel()
             {
-                Services = services
+                Services = services,
+                Sites = sites
             };
             return View(viewModel);
         }
@@ -38,13 +40,13 @@ namespace Bloc_CESI_ASP.Controllers
             var employee = new Employee()
             {
                 Id = Guid.NewGuid(),
-                FirstName = addEmployeeRequest.FirstName,
-                LastName = addEmployeeRequest.LastName,
-                LandlinePhone = addEmployeeRequest.LandlinePhone,
-                MobilePhone = addEmployeeRequest.MobilePhone,
-                Email = addEmployeeRequest.Email,
-                Service = addEmployeeRequest.SelectedService,
-                Site = null,
+                FirstName = addEmployeeRequest.FirstName != "" ? addEmployeeRequest.FirstName : "" ,
+                LastName = addEmployeeRequest.LastName != "" ?  addEmployeeRequest.LastName : "",
+                LandlinePhone = addEmployeeRequest.LandlinePhone != "" ? addEmployeeRequest.LandlinePhone : "",
+                MobilePhone = addEmployeeRequest.MobilePhone != "" ? addEmployeeRequest.MobilePhone : "" ,
+                Email = addEmployeeRequest.Email != "" ? addEmployeeRequest.Email : "",
+                Service = addEmployeeRequest.Service != "" ? addEmployeeRequest.Service : "",
+                Site = addEmployeeRequest.Site != "" ? addEmployeeRequest.Site : "",
             };
 
             await _applicationDbContext.Employees.AddAsync(employee);
@@ -57,6 +59,8 @@ namespace Bloc_CESI_ASP.Controllers
         public async Task<IActionResult> View(Guid id)
         {
            var employee = await _applicationDbContext.Employees.FirstOrDefaultAsync(x => x.Id == id);
+           var services = await _applicationDbContext.Services.ToListAsync();
+           var sites = await _applicationDbContext.Sites.ToListAsync();
 
            if (employee != null)
            {
@@ -68,8 +72,10 @@ namespace Bloc_CESI_ASP.Controllers
                    LandlinePhone = employee.LandlinePhone,
                    MobilePhone = employee.MobilePhone,
                    Email = employee.Email,
-                   Services = null,
-                   Sites = null,
+                   Service = employee.Service,
+                   Site = employee.Site,
+                   Services = services,
+                   Sites = sites,
                };
                return await Task.Run(() => View("View", viewModel));
            }
@@ -89,8 +95,8 @@ namespace Bloc_CESI_ASP.Controllers
                 employee.LandlinePhone = model.LandlinePhone;
                 employee.MobilePhone = model.MobilePhone;
                 employee.Email = model.Email;
-                employee.Service = model.SelectedService;
-                employee.Site = null;
+                employee.Service = model.Service;
+                employee.Site = model.Site;
 
                 await _applicationDbContext.SaveChangesAsync();
                 

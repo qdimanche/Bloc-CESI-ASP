@@ -9,9 +9,12 @@ public class AddEmployeeViewModel
     public string? Email { get; set; }
     
     public List<Service>? Services { get; set; }
-    public string? SelectedService { get; set; }
+    public string? Service { get; set; }
 
     public List<Site>? Sites { get; set; }
+    
+    public string? Site { get; set; }
+
     
     
 }

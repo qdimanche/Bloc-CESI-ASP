@@ -1,6 +1,7 @@
 @model Bloc_CESI_ASP.Models.UpdateEmployeeViewModel
 
-@{}
+@{
+}
 
 
 <h1>Edit Employee</h1>
@@ -12,24 +13,55 @@
     <div class="mb-3">
         <label for="" class="form-label">First name</label>
         <input type="text" class="form-control" asp-for="FirstName">
-    </div>   
+    </div>
     <div class="mb-3">
         <label for="" class="form-label">Last name</label>
         <input type="text" class="form-control" asp-for="LastName">
-    </div> 
+    </div>
     <div class="mb-3">
         <label for="" class="form-label">Landline phone</label>
         <input type="tel" class="form-control" asp-for="LandlinePhone">
-    </div>   
+    </div>
     <div class="mb-3">
         <label for="" class="form-label">Mobile phone</label>
         <input type="tel" class="form-control" asp-for="MobilePhone">
-    </div>  
+    </div>
     <div class="mb-3">
         <label for="" class="form-label">Email</label>
         <input type="email" class="form-control" asp-for="Email">
     </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Service</label>
+        <select asp-for="Service">
+            @if (Model.Services != null)
+            {
+                @foreach (var service in Model.Services)
+                {
+                    <option value="@service.Name">@service.Name</option>
+                }
+            }
+        else
+        {
+            <option value="">No services available</option>
+        }
+        </select>
+    </div> 
+    <div class="mb-3">
+        <label for="" class="form-label">Service</label>
+        <select asp-for="Site">
+            @if (Model.Sites != null)
+            {
+                @foreach (var site in Model.Sites)
+                {
+                    <option value="@site.City">@site.City</option>
+                }
+            }
+        else
+        {
+            <option value="">No sites available</option>
+        }
+        </select>
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
     <button type="submit" class="btn btn-danger" asp-action="Delete" asp-controller="Employees">Delete</button>
 </form>
-
