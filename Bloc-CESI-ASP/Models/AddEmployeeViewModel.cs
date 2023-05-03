@@ -14,7 +14,4 @@ public class AddEmployeeViewModel
     public List<Site>? Sites { get; set; }
     
     public string? Site { get; set; }
-
-    
-    
 }

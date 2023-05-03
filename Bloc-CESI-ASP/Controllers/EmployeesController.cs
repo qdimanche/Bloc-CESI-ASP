@@ -86,6 +86,7 @@ namespace Bloc_CESI_ASP.Controllers
         [HttpPost]
         public async Task<IActionResult> View(UpdateEmployeeViewModel model)
         {
+            
             var employee = await _applicationDbContext.Employees.FindAsync(model.Id);
 
             if (employee != null)

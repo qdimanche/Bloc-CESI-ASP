@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "xIVfRiz5C7iiezHTGO45xNPCULUcdonyOw0akiMOmNXbYNrksL20l5KmGOWiv7TlWgYZaCPTDwmkeQlsP9ifZw==",
+  "dgSpecHash": "iVvYuYdzPxNhj/UlLRLMc/StQWghwto+GK/+IWnaAWjpUSww3xwDpd+CUv81pisOR2636xAq/c/2K9oRtm8LRQ==",
   "success": true,
   "projectFilePath": "/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Bloc-CESI-ASP.csproj",
   "expectedPackageFiles": [
+    "/Users/quentindimanche/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/Users/quentindimanche/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/quentindimanche/.nuget/packages/microsoft.aspnetcore.razor.language/6.0.11/microsoft.aspnetcore.razor.language.6.0.11.nupkg.sha512",
     "/Users/quentindimanche/.nuget/packages/microsoft.bcl.asyncinterfaces/6.0.0/microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

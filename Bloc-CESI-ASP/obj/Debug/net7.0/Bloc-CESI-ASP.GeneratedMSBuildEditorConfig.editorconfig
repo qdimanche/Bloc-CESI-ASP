@@ -36,6 +36,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Services/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VydmljZXMvQWRkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
