@@ -1,3 +1,17 @@
 ﻿@{
     Layout = "_Layout";
+    
+    var routeData = ViewContext.RouteData;
+    if (routeData.Values["controller"] as string == "Employees")
+    {
+        routeData.Values["controller"] = "admin/employees";
+    }   
+    if (routeData.Values["controller"] as string == "Sites")
+    {
+        routeData.Values["controller"] = "admin/sites";
+    } 
+    if (routeData.Values["controller"] as string == "Services")
+    {
+        routeData.Values["controller"] = "admin/services";
+    }
 }

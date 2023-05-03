@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bloc_CESI_ASP.Controllers
 {
+    [Route("admin/employees/[action]")]
     public class EmployeesController : Controller
     {
         private readonly ApplicationDbContext _applicationDbContext;
@@ -18,7 +19,7 @@ namespace Bloc_CESI_ASP.Controllers
         public async Task<IActionResult> Index()
         {
             var employees = await _applicationDbContext.Employees.ToListAsync();
-            return View(employees);
+            return View("~/Views/Admin/Employees/Index.cshtml",employees);
         }  
         
         [HttpGet]
@@ -31,7 +32,7 @@ namespace Bloc_CESI_ASP.Controllers
                 Services = services,
                 Sites = sites
             };
-            return View(viewModel);
+            return View("~/Views/Admin/Employees/Add.cshtml",viewModel);
         }
 
         [HttpPost]
@@ -77,7 +78,7 @@ namespace Bloc_CESI_ASP.Controllers
                    Services = services,
                    Sites = sites,
                };
-               return await Task.Run(() => View("View", viewModel));
+               return await Task.Run(() => View("~/Views/Admin/Employees/View.cshtml", viewModel));
            }
 
            return RedirectToAction("Index");

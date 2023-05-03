@@ -28,7 +28,7 @@ app.UseRouting();
 
 app.Use(async (context, next) =>
 {
-    if (!context.Request.Cookies.ContainsKey("userToken") && !context.Request.Path.StartsWithSegments("/login") && !context.Request.Path.StartsWithSegments("/register"))
+    if (!context.Request.Cookies.ContainsKey("userToken") && context.Request.Path.StartsWithSegments("/admin") )
     {
         context.Response.Redirect("/login");
     }
@@ -36,6 +36,21 @@ app.Use(async (context, next) =>
 });
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "admin_employees",
+    pattern: "admin/employees/{action=Index}/{id?}",
+    defaults: new { controller = "Employees"});
+
+app.MapControllerRoute(
+    name: "admin_sites",
+    pattern: "admin/sites/{action=Index}/{id?}",
+    defaults: new { controller = "Sites"});
+
+app.MapControllerRoute(
+    name: "admin_services",
+    pattern: "admin/services/{action=Index}/{id?}",
+    defaults: new { controller = "Services"});
 
 app.MapControllerRoute(
     name: "login",

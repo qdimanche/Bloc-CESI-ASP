@@ -21,4 +21,29 @@
       <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Views\Admin" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Views\Admin\Employees\Add.cshtml" />
+      <AdditionalFiles Include="Views\Admin\Employees\Index.cshtml" />
+      <AdditionalFiles Include="Views\Admin\Employees\View.cshtml" />
+      <AdditionalFiles Include="Views\Admin\Services\Add.cshtml" />
+      <AdditionalFiles Include="Views\Admin\Services\Index.cshtml" />
+      <AdditionalFiles Include="Views\Admin\Services\View.cshtml" />
+      <AdditionalFiles Include="Views\Admin\Sites\Add.cshtml" />
+      <AdditionalFiles Include="Views\Admin\Sites\Index.cshtml" />
+      <AdditionalFiles Include="Views\Admin\Sites\View.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Services\Add.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Services\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Services\View.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Employees\Add.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Employees\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Employees\View.cshtml" />
+    </ItemGroup>
+
 </Project>

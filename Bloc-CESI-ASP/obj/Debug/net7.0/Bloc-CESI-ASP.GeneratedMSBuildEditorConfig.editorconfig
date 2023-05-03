@@ -16,16 +16,58 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Employees/Add.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWVzL0FkZC5jc2h0bWw=
+[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Admin/Employees/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRW1wbG95ZWVzL0FkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Employees/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWVzL0luZGV4LmNzaHRtbA==
+[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Admin/Employees/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRW1wbG95ZWVzL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Employees/View.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWVzL1ZpZXcuY3NodG1s
+[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Admin/Employees/View.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRW1wbG95ZWVzL1ZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Admin/Services/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vU2VydmljZXMvQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Admin/Services/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vU2VydmljZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Admin/Services/View.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vU2VydmljZXMvVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Admin/Sites/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vU2l0ZXMvQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Admin/Sites/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vU2l0ZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Admin/Sites/View.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vU2l0ZXMvVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Home/Index.cshtml]
@@ -44,36 +86,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Services/Add.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VydmljZXMvQWRkLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Services/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VydmljZXMvSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Services/View.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VydmljZXMvVmlldy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Sites/Add.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2l0ZXMvQWRkLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Sites/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2l0ZXMvSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/Sites/View.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2l0ZXMvVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/quentindimanche/Projects/CESI/ASP.NET/Bloc-CESI-ASP/Bloc-CESI-ASP/Views/_ViewImports.cshtml]

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bloc_CESI_ASP.Controllers
 {
+    [Route("admin/services/[action]")]
     public class ServicesController : Controller
     {
         private readonly ApplicationDbContext _applicationDbContext;
@@ -18,13 +19,13 @@ namespace Bloc_CESI_ASP.Controllers
         public async Task<IActionResult> Index()
         {
             var sites = await _applicationDbContext.Services.ToListAsync();
-            return View(sites);
+            return View("~/Views/Admin/Services/Index.cshtml", sites);
         }  
         
         [HttpGet]
         public IActionResult Add()
         {
-            return View();
+            return View("~/Views/Admin/Services/Add.cshtml");
         }
 
         [HttpPost]
@@ -54,7 +55,7 @@ namespace Bloc_CESI_ASP.Controllers
                    Id = service.Id,
                    Name = service.Name,
                };
-               return await Task.Run(() => View("View", viewModel));
+               return await Task.Run(() => View("~/Views/Admin/Services/View.cshtml", viewModel));
            }
 
            return RedirectToAction("Index");
@@ -80,8 +81,9 @@ namespace Bloc_CESI_ASP.Controllers
         public async Task<IActionResult> Delete(UpdateServiceViewModel model)
         {
             var service = await _applicationDbContext.Services.FindAsync(model.Id);
+            var employeeWithService = await _applicationDbContext.Employees.FirstOrDefaultAsync(x => x.Service == model.Name);
 
-            if (service != null)
+            if (service != null && employeeWithService == null)
             {
                 _applicationDbContext.Services.Remove(service);
                 await _applicationDbContext.SaveChangesAsync();

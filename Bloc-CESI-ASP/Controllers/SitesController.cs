@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bloc_CESI_ASP.Controllers
 {
+    [Route("admin/sites/[action]")]
     public class SitesController : Controller
     {
         private readonly ApplicationDbContext _applicationDbContext;
@@ -22,13 +23,13 @@ namespace Bloc_CESI_ASP.Controllers
         public async Task<IActionResult> Index()
         {
             var sites = await _applicationDbContext.Sites.ToListAsync();
-            return View(sites);
+            return View("~/Views/Admin/Sites/Index.cshtml",sites);
         }  
         
         [HttpGet]
         public IActionResult Add()
         {
-            return View();
+            return View("~/Views/Admin/Sites/Add.cshtml");
         }
 
         [HttpPost]
@@ -58,7 +59,7 @@ namespace Bloc_CESI_ASP.Controllers
                    Id = site.Id,
                    City = site.City,
                };
-               return await Task.Run(() => View("View", viewModel));
+               return await Task.Run(() => View("~/Views/Admin/Sites/View.cshtml", viewModel));
            }
 
            return RedirectToAction("Index");
@@ -84,8 +85,10 @@ namespace Bloc_CESI_ASP.Controllers
         public async Task<IActionResult> Delete(UpdateSiteViewModel model)
         {
             var site = await _applicationDbContext.Sites.FindAsync(model.Id);
+            var employeeWithSite = await _applicationDbContext.Employees.FirstOrDefaultAsync(x => x.Site == model.City);
 
-            if (site != null)
+
+            if (site != null && employeeWithSite == null)
             {
                 _applicationDbContext.Sites.Remove(site);
                 await _applicationDbContext.SaveChangesAsync();
