@@ -69,6 +69,13 @@ namespace Bloc_CESI_ASP.Controllers
             return View("~/Views/Home/Index.cshtml");
         }
         
+        [HttpGet]
+        public async Task<IActionResult> Disconnect()
+        {
+            Response.Cookies.Delete("userToken");
+            return View("~/Views/Home/Index.cshtml");
+        }
+        
         
     }
 }

@@ -1,6 +1,15 @@
 @model List<Bloc_CESI_ASP.Models.Service>
 
+@{
+   Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <h1>Sites</h1>
+@if (Context.Request.Cookies.ContainsKey("userToken"))
+{
+   <a href="/admin/Services/Add" class="btn btn-primary mb-5">Add</a>
+}
+
 
 <table class="table">
    <thead>
@@ -16,7 +25,10 @@
          <tr>
             <td>@service.Id</td>
             <td>@service.Name</td>
-            <td><a href="Services/View/@service.Id">View</a></td>
+            @if (Context.Request.Cookies.ContainsKey("userToken"))
+            {
+               <td><a href="View/@service.Id">View</a></td>
+            }
          </tr>
       }
    </tbody>

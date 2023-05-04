@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("MySql");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 31)))) ;
+    options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 31))));
 
 builder.Services.AddControllersWithViews();
 
@@ -28,10 +28,14 @@ app.UseRouting();
 
 app.Use(async (context, next) =>
 {
-    if (!context.Request.Cookies.ContainsKey("userToken") && context.Request.Path.StartsWithSegments("/admin") )
+    if (!context.Request.Cookies.ContainsKey("userToken") && context.Request.Path.StartsWithSegments("/admin") &&
+        !context.Request.Path.StartsWithSegments("/admin/employees/Index") &&
+        !context.Request.Path.StartsWithSegments("/admin/sites/Index") &&
+        !context.Request.Path.StartsWithSegments("/admin/services/Index"))
     {
         context.Response.Redirect("/login");
     }
+
     await next();
 });
 
@@ -40,17 +44,53 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "admin_employees",
     pattern: "admin/employees/{action=Index}/{id?}",
-    defaults: new { controller = "Employees"});
+    defaults: new { controller = "Employees" });
+
+
+app.MapControllerRoute(
+    name: "admin_employees",
+    pattern: "admin/employees/{action=View}/{id?}",
+    defaults: new { controller = "Employees" });
+
+app.MapControllerRoute(
+    name: "admin_employees",
+    pattern: "admin/employees/{action=Add}/{id?}",
+    defaults: new { controller = "Employees" });
+
 
 app.MapControllerRoute(
     name: "admin_sites",
     pattern: "admin/sites/{action=Index}/{id?}",
-    defaults: new { controller = "Sites"});
+    defaults: new { controller = "Sites" });
+
+
+app.MapControllerRoute(
+    name: "admin_sites",
+    pattern: "admin/sites/{action=View}/{id?}",
+    defaults: new { controller = "Sites" });
+
+
+app.MapControllerRoute(
+    name: "admin_sites",
+    pattern: "admin/sites/{action=Add}/{id?}",
+    defaults: new { controller = "Sites" });
+
+
 
 app.MapControllerRoute(
     name: "admin_services",
     pattern: "admin/services/{action=Index}/{id?}",
-    defaults: new { controller = "Services"});
+    defaults: new { controller = "Services" });
+
+app.MapControllerRoute(
+    name: "admin_services",
+    pattern: "admin/services/{action=Add}/{id?}",
+    defaults: new { controller = "Services" });
+
+app.MapControllerRoute(
+    name: "admin_services",
+    pattern: "admin/services/{action=View}/{id?}",
+    defaults: new { controller = "Services" });
 
 app.MapControllerRoute(
     name: "login",
