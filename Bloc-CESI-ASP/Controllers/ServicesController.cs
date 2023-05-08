@@ -16,10 +16,12 @@ namespace Bloc_CESI_ASP.Controllers
         }
         
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(ServiceViewModel indexServiceRequest)
         {
-            var sites = await _applicationDbContext.Services.ToListAsync();
-            return View("~/Views/Admin/Services/Index.cshtml", sites);
+            var services = await _applicationDbContext.Services.ToListAsync();
+            indexServiceRequest.Services = services;
+            
+            return View("~/Views/Admin/Services/Index.cshtml", indexServiceRequest);
         }  
         
         [HttpGet]
@@ -55,7 +57,7 @@ namespace Bloc_CESI_ASP.Controllers
                    Id = service.Id,
                    Name = service.Name,
                };
-               return await Task.Run(() => View("~/Views/Admin/Services/View.cshtml", viewModel));
+               return await Task.Run(() => View("~/Views/admin/services/view.cshtml", viewModel));
            }
 
            return RedirectToAction("Index");
@@ -91,6 +93,17 @@ namespace Bloc_CESI_ASP.Controllers
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Search(ServiceViewModel searchServiceRequest)
+        {
+            var services = await _applicationDbContext.Services.Where( x=>
+                x.Name == searchServiceRequest.Request).ToListAsync();
+
+            searchServiceRequest.Services = services;
+            
+            return View("~/Views/Admin/Services/Index.cshtml", searchServiceRequest);
         }
     }
 }

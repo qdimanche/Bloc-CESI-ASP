@@ -1,31 +1,39 @@
-@model List<Bloc_CESI_ASP.Models.Site>
+@model Bloc_CESI_ASP.Models.SiteViewModel
 
-<h1>Sites</h1>
+<h1 class="mb-5">Sites</h1>
+<form method="post" action="Search" class="mb-5">
+    <div class="mb-3">
+        <input type="text" placeholder="Search..." class="form-control" asp-for="Request">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
 @if (Context.Request.Cookies.ContainsKey("userToken"))
 {
-   <a href="/admin/Sites/Add" class="btn btn-primary mb-5">Add</a>
+   <a href="/admin/sites/add" class="btn btn-primary mb-5">Add</a>
 }
 
 <table class="table">
    <thead>
    <tr>
-      <th>Id</th>
       <th>City</th>
       <th></th>
    </tr>
    </thead>
    <tbody>
-      @foreach (var site in Model)
+   @if (Model.Sites != null)
+   {
+      @foreach (var site in Model.Sites)
       {
          <tr>
-            <td>@site.Id</td>
             <td>@site.City</td>
             @if (Context.Request.Cookies.ContainsKey("userToken"))
             {
-               <td><a href="/admin/Sites/View/@site.Id">View</a></td>
+               <td><a asp-action="View" asp-controller="Sites" asp-route-id="@site.Id">View</a></td>
             }
          </tr>
       }
+   }
    </tbody>
 
 </table>

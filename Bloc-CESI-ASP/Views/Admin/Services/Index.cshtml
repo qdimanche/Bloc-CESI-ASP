@@ -1,36 +1,44 @@
-@model List<Bloc_CESI_ASP.Models.Service>
+@model Bloc_CESI_ASP.Models.ServiceViewModel
 
 @{
    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Sites</h1>
+<h1 class="mb-5">Sites</h1>
+<form method="post" action="Search" class="mb-5">
+    <div class="mb-3">
+        <input type="text" placeholder="Search..." class="form-control" asp-for="Request">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
 @if (Context.Request.Cookies.ContainsKey("userToken"))
 {
-   <a href="/admin/Services/Add" class="btn btn-primary mb-5">Add</a>
+   <a href="/admin/services/add" class="btn btn-primary mb-5">Add</a>
 }
 
 
 <table class="table">
    <thead>
    <tr>
-      <th>Id</th>
       <th>Name</th>
       <th></th>
    </tr>
    </thead>
    <tbody>
-      @foreach (var service in Model)
+   @if (Model.Services != null)
+   {
+      @foreach (var service in Model.Services)
       {
          <tr>
-            <td>@service.Id</td>
             <td>@service.Name</td>
             @if (Context.Request.Cookies.ContainsKey("userToken"))
             {
-               <td><a href="View/@service.Id">View</a></td>
+               <td><a asp-action="View" asp-controller="Services" asp-route-id="@service.Id">View</a></td>
             }
          </tr>
       }
+   }
    </tbody>
 
 </table>

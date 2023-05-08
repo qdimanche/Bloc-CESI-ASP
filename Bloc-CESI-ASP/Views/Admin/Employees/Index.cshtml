@@ -1,42 +1,55 @@
-@model List<Bloc_CESI_ASP.Models.Employee>
+@model Bloc_CESI_ASP.Models.EmployeeViewModel
 
-<h1>Employees</h1>
+<h1 class="mb-5">Employees</h1>
+
+<form method="post" action="Search" class="mb-5">
+    <div class="mb-3">
+        <input type="text" placeholder="Search..." class="form-control" asp-for="Request">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
 @if (Context.Request.Cookies.ContainsKey("userToken"))
 {
-   <a href="/admin/Employees/Add" class="btn btn-primary mb-5">Add</a>
+    <a href="/admin/employees/add" class="btn btn-primary mb-5">Add</a>
 }
 
 
 <table class="table">
-   <thead>
-   <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Landline phone</th>
-      <th>Mobile phone</th>
-      <th>Email</th>
-      <th>Service</th>
-      <th>Site</th>
-      <th></th>
-   </tr>
-   </thead>
-   <tbody>
-      @foreach (var employee in Model)
-      {
-         <tr>
-            <td>@employee.FirstName</td>
-            <td>@employee.LastName</td>
-            <td>@employee.LandlinePhone</td>
-            <td>@employee.MobilePhone</td>
-            <td>@employee.Email</td>
-            <td>@employee.Service</td>
-            <td>@employee.Site</td>
-            @if (Context.Request.Cookies.ContainsKey("userToken"))
-            {
-               <td><a href="View/@employee.Id">View</a></td>
-            }
-         </tr>
-      }
-   </tbody>
+    <thead>
+    <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Landline phone</th>
+        <th>Mobile phone</th>
+        <th>Email</th>
+        <th>Service</th>
+        <th>Site</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.Employees != null)
+    {
+        @foreach (var employee in Model.Employees)
+        {
+            <tr>
+                <td>@employee.FirstName</td>
+                <td>@employee.LastName</td>
+                <td>@employee.LandlinePhone</td>
+                <td>@employee.MobilePhone</td>
+                <td>@employee.Email</td>
+                <td>@employee.Service</td>
+                <td>@employee.Site</td>
+                @if (Context.Request.Cookies.ContainsKey("userToken"))
+                {
+                    <td>
+                        <a asp-action="View" asp-controller="Employees" asp-route-id="@employee.Id">View</a>
+                    </td>
+                }
+            </tr>
+        }
+    }
+    </tbody>
 
 </table>

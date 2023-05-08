@@ -20,16 +20,18 @@ namespace Bloc_CESI_ASP.Controllers
         }
         
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(SiteViewModel indexSiteRequest)
         {
             var sites = await _applicationDbContext.Sites.ToListAsync();
-            return View("~/Views/Admin/Sites/Index.cshtml",sites);
+            indexSiteRequest.Sites = sites;
+
+            return View("~/Views/admin/sites/index.cshtml",indexSiteRequest);
         }  
         
         [HttpGet]
         public IActionResult Add()
         {
-            return View("~/Views/Admin/Sites/Add.cshtml");
+            return View("~/Views/admin/sites/add.cshtml");
         }
 
         [HttpPost]
@@ -59,7 +61,7 @@ namespace Bloc_CESI_ASP.Controllers
                    Id = site.Id,
                    City = site.City,
                };
-               return await Task.Run(() => View("~/Views/Admin/Sites/View.cshtml", viewModel));
+               return await Task.Run(() => View("~/views/admin/sites/view.cshtml", viewModel));
            }
 
            return RedirectToAction("Index");
@@ -96,6 +98,18 @@ namespace Bloc_CESI_ASP.Controllers
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index");
+        }
+        
+        
+        [HttpPost]
+        public async Task<IActionResult> Search(SiteViewModel searchSiteRequest)
+        {
+            var sites = await _applicationDbContext.Sites.Where( x=>
+                x.City == searchSiteRequest.Request).ToListAsync();
+
+            searchSiteRequest.Sites = sites;
+            
+            return View("~/Views/admin/sites/index.cshtml", searchSiteRequest);
         }
     }
 }

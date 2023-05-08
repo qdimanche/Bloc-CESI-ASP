@@ -14,14 +14,16 @@ namespace Bloc_CESI_ASP.Controllers
         {
             _applicationDbContext = applicationDbContext;
         }
-        
+
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(EmployeeViewModel indexEmployeeRequest)
         {
             var employees = await _applicationDbContext.Employees.ToListAsync();
-            return View("~/Views/Admin/Employees/Index.cshtml",employees);
-        }  
-        
+            indexEmployeeRequest.Employees = employees;
+
+            return View("~/Views/Admin/Employees/Index.cshtml", indexEmployeeRequest);
+        }
+
         [HttpGet]
         public async Task<IActionResult> Add()
         {
@@ -32,7 +34,7 @@ namespace Bloc_CESI_ASP.Controllers
                 Services = services,
                 Sites = sites
             };
-            return View("~/Views/Admin/Employees/Add.cshtml",viewModel);
+            return View("~/Views/Admin/Employees/Add.cshtml", viewModel);
         }
 
         [HttpPost]
@@ -41,10 +43,10 @@ namespace Bloc_CESI_ASP.Controllers
             var employee = new Employee()
             {
                 Id = Guid.NewGuid(),
-                FirstName = addEmployeeRequest.FirstName != "" ? addEmployeeRequest.FirstName : "" ,
-                LastName = addEmployeeRequest.LastName != "" ?  addEmployeeRequest.LastName : "",
+                FirstName = addEmployeeRequest.FirstName != "" ? addEmployeeRequest.FirstName : "",
+                LastName = addEmployeeRequest.LastName != "" ? addEmployeeRequest.LastName : "",
                 LandlinePhone = addEmployeeRequest.LandlinePhone != "" ? addEmployeeRequest.LandlinePhone : "",
-                MobilePhone = addEmployeeRequest.MobilePhone != "" ? addEmployeeRequest.MobilePhone : "" ,
+                MobilePhone = addEmployeeRequest.MobilePhone != "" ? addEmployeeRequest.MobilePhone : "",
                 Email = addEmployeeRequest.Email != "" ? addEmployeeRequest.Email : "",
                 Service = addEmployeeRequest.Service != "" ? addEmployeeRequest.Service : "",
                 Site = addEmployeeRequest.Site != "" ? addEmployeeRequest.Site : "",
@@ -59,35 +61,34 @@ namespace Bloc_CESI_ASP.Controllers
         [HttpGet]
         public async Task<IActionResult> View(Guid id)
         {
-           var employee = await _applicationDbContext.Employees.FirstOrDefaultAsync(x => x.Id == id);
-           var services = await _applicationDbContext.Services.ToListAsync();
-           var sites = await _applicationDbContext.Sites.ToListAsync();
+            var employee = await _applicationDbContext.Employees.FirstOrDefaultAsync(x => x.Id == id);
+            var services = await _applicationDbContext.Services.ToListAsync();
+            var sites = await _applicationDbContext.Sites.ToListAsync();
 
-           if (employee != null)
-           {
-               var viewModel = new UpdateEmployeeViewModel()
-               {
-                   Id = employee.Id,
-                   FirstName = employee.FirstName,
-                   LastName = employee.LastName,
-                   LandlinePhone = employee.LandlinePhone,
-                   MobilePhone = employee.MobilePhone,
-                   Email = employee.Email,
-                   Service = employee.Service,
-                   Site = employee.Site,
-                   Services = services,
-                   Sites = sites,
-               };
-               return await Task.Run(() => View("~/Views/Admin/Employees/View.cshtml", viewModel));
-           }
+            if (employee != null)
+            {
+                var viewModel = new UpdateEmployeeViewModel()
+                {
+                    Id = employee.Id,
+                    FirstName = employee.FirstName,
+                    LastName = employee.LastName,
+                    LandlinePhone = employee.LandlinePhone,
+                    MobilePhone = employee.MobilePhone,
+                    Email = employee.Email,
+                    Service = employee.Service,
+                    Site = employee.Site,
+                    Services = services,
+                    Sites = sites,
+                };
+                return await Task.Run(() => View("~/Views/admin/employees/view.cshtml", viewModel));
+            }
 
-           return RedirectToAction("Index");
+            return RedirectToAction("Index");
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> View(UpdateEmployeeViewModel model)
         {
-            
             var employee = await _applicationDbContext.Employees.FindAsync(model.Id);
 
             if (employee != null)
@@ -101,9 +102,10 @@ namespace Bloc_CESI_ASP.Controllers
                 employee.Site = model.Site;
 
                 await _applicationDbContext.SaveChangesAsync();
-                
+
                 return RedirectToAction("Index");
             }
+
             return RedirectToAction("Index");
         }
 
@@ -119,7 +121,20 @@ namespace Bloc_CESI_ASP.Controllers
 
                 return RedirectToAction("Index");
             }
+
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Search(EmployeeViewModel searchEmployeeRequest)
+        {
+            var employees = await _applicationDbContext.Employees.Where( x=>
+                x.FirstName == searchEmployeeRequest.Request || x.LastName == searchEmployeeRequest.Request ||
+                x.Email == searchEmployeeRequest.Request).ToListAsync();
+
+            searchEmployeeRequest.Employees = employees;
+            
+            return View("~/Views/Admin/Employees/Index.cshtml", searchEmployeeRequest);
         }
     }
 }
